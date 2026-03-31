@@ -1,0 +1,159 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  #filters {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid transparent;
+    border-radius: 3.5rem;
+    transition:
+      border 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  #filters:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.25);
+  }
+  .filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.6;
+    align-items: baseline;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .toggle-form {
+    margin-left: 3rem;
+  }
+  /* .form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 3rem;
+    padding: 1rem 4rem 1rem 4rem;
+    margin-left: 3rem;
+  } */
+  #checkbox {
+    margin-left: 1rem;
+    border: 2px solid transparent;
+    border-radius: 3rem;
+    padding: 1rem 1.5rem; /* important for spacing */
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    transition:
+      border 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  #checkbox:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.25);
+  }
+  .taxes{
+    display: inline-block;
+  }
+</style>
+<body>
+  <div id="filters">
+    <div class="filter" style="margin-left: 10px;">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-bed"></i></div>
+      <p>Bed</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-mountain-city"></i></div>
+      <p>Iconic city</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-car"></i></i></div>
+      <p>Parking</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-mountain"></i></div>
+      <p>Mountain</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castle</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-regular fa-snowflake"></i></div>
+      <p>Arctic</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-regular fa-snowflake"></i></div>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-cow"></i></div>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-mountain"></i></div>
+      <p>Mountain</p>
+    </div>
+    <div id="checkbox" class="filter">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="switchCheckChecked"
+          checked
+        />
+        <label class="form-check-label" for="switchCheckChecked"
+          >Include Taxes</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% allListings.forEach(function(listing){ %>
+    <a href="/listing/<%=listing._id%>" class="linking-list"
+      ><div class="card col card-listing">
+        <img
+          src="<%= listing.image.url%>"
+          class="card-img-top"
+          style="height: 20rem"
+          alt="listing_image"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%=listing.title%></b><br />
+            &#8377;<%=listing.price%>&nbsp;&nbsp; <i class="taxes">+18% GST</i>
+          </p>
+        </div>
+      </div></a
+    >
+    <% }) %>
+  </div>
+  <script>
+    let togglebtn = document.getElementById("switchCheckChecked");
+    togglebtn.addEventListener("click",()=>{
+      let taxes = document.querySelectorAll(".taxes");
+      for(tax of taxes){
+        if(tax.style.display=="none"){
+          tax.style.display="inline-block";
+        }else{
+          tax.style.display="none";
+        }
+        
+      }
+    })
+  </script>
+</body>

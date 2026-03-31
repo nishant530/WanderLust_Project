@@ -1,0 +1,80 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <h3>Create new location</h3>
+  <form
+    method="post"
+    action="/listing"
+    novalidate
+    class="needs-validation"
+    enctype="multipart/form-data"
+  >
+    <div>
+      <label for="title" class="form-label">Title</label>
+      <input
+        name="listing[title]"
+        placeholder="enter title"
+        class="form-control"
+        required
+      />
+      <div class="valid-feedback">Title Looks good!</div>
+    </div>
+    <br />
+    <div>
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        name="listing[description]"
+        class="form-control"
+        required
+      ></textarea>
+      <div class="invalid-feedback">Please enter a short description</div>
+      <br />
+    </div>
+    <div>
+      <label for="image" class="form-label">Upload Image</label>
+      <input
+        name="listing[image]"
+        class="form-control"
+        type="file"
+        required
+      /><br />
+    </div>
+    <div>
+      <label for="price" class="form-label">Price</label>
+      <input
+        name="listing[price]"
+        placeholder="price"
+        type="number"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Enter a valid Price</div>
+      <br />
+    </div>
+    <div>
+      <label for="location" class="form-label">Location</label>
+      <input
+        name="listing[location]"
+        placeholder="location"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Enter a valid location</div>
+      <br />
+    </div>
+    <div>
+      <label for="country" class="form-label">Country</label>
+      <input
+        name="listing[country]"
+        placeholder="country"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Enter a valid Country name</div>
+      <br />
+    </div>
+
+    <button class="btn btn-dark">Add to page</button>
+  </form>
+  <br />
+  <script src="./js/script.js"></script>
+</body>
